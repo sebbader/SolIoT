@@ -7,6 +7,8 @@ const loadUpdateIndex = require('./updateIndex')
 const { spawnSync } = require('child_process')
 const path = require('path')
 
+const loadCoap = require('./coap')
+
 module.exports = function startCli (server) {
   program.version(getVersion())
 
@@ -18,6 +20,9 @@ module.exports = function startCli (server) {
 
   program.parse(process.argv)
   if (program.args.length === 0) program.help()
+  
+  // sba extension:
+  loadCoap()
 }
 
 function getVersion () {
@@ -38,3 +43,4 @@ function getVersion () {
   }
 }
 
+
