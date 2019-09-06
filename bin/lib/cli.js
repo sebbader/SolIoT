@@ -8,6 +8,7 @@ const { spawnSync } = require('child_process')
 const path = require('path')
 
 const loadCoap = require('./coap')
+const loadMqtt = require('./mqtt')
 
 module.exports = function startCli (server) {
   program.version(getVersion())
@@ -23,6 +24,7 @@ module.exports = function startCli (server) {
   
   // sba extension:
   loadCoap()
+  loadMqtt()
 }
 
 function getVersion () {
@@ -43,4 +45,4 @@ function getVersion () {
   }
 }
 
-
+

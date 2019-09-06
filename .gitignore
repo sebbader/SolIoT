@@ -15,10 +15,10 @@
 /coverage
 /node_modules
 /npm-debug.log
-package*.json
+package*
 test/resources/config/templates/**
 test/resources/sampleContainer/**
-test/resources/acl-tls/**
+test/resources/acl-tls**
 templates/**
 views/**
 .settings/**
