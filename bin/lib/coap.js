@@ -3,21 +3,21 @@
  */
 
 const coap = require('coap')
-require('../../lib/iot/coap/GetHandler')
+require('../../lib/iot/coap/CoapGetHandler')
 require('../../lib/iot/coap/PostHandler')
     
-module.exports = function () {
+module.exports = function (program) {
     var server = coap.createServer()
     
-    var getHandler = new GetHandler()
+    var getHandler = new CoapGetHandler(program)
     var postHandler = new PostHandler()
     
     // add handlers for CoAP methods
     server.on('request', function(req, res) {
         if (req.method == "GET") {
-            console.log('CoAP GET: ' + req.url)
-            //getHandler.handle(req, res)
-            res.end('Responding with: messageGet');
+            //console.log('CoAP GET: ' + req.url)
+            getHandler.handle(req, res)
+            //res.end('Responding with: messageGet');
         }
         else if (req.method == "PUT") {
             console.log('CoAP PUT: ' + req.url)
@@ -37,7 +37,8 @@ module.exports = function () {
     
     // the default CoAP port is 5683
     server.listen(683, function() {
-      var req = coap.request('coap://localhost:683/Sebastian')
+        console.log('CoAP server listens at port 683.')
+        var req = coap.request('coap://localhost:683/profile/card#me')
     
       req.on('response', function(res) {
         res.pipe(process.stdout)
@@ -49,6 +50,7 @@ module.exports = function () {
       // TODO add handlers
     
       req.end()
+      
     })
     
 /*

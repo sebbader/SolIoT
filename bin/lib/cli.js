@@ -23,7 +23,7 @@ module.exports = function startCli (server) {
   if (program.args.length === 0) program.help()
   
   // sba extension:
-  loadCoap()
+  loadCoap(program)
   loadMqtt()
 }
 
