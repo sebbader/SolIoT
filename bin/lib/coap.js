@@ -5,12 +5,17 @@
 const coap = require('coap')
 require('../../lib/iot/coap/CoapGetHandler')
 require('../../lib/iot/coap/PostHandler')
+require('../../lib/iot/coap/DeleteHandler')
+require('../../lib/iot/coap/PutHandler')
+
     
 module.exports = function (program) {
     var server = coap.createServer()
     
     var getHandler = new CoapGetHandler(program)
-    var postHandler = new PostHandler()
+    var postHandler = new PostHandler(program)	
+	var deleteHandler = new DeleteHandler(program)
+	var putHandler = new PutHandler(program)
     
     // add handlers for CoAP methods
     server.on('request', function(req, res) {
@@ -20,8 +25,9 @@ module.exports = function (program) {
             //res.end('Responding with: messageGet');
         }
         else if (req.method == "PUT") {
-            console.log('CoAP PUT: ' + req.url)
-            res.end('Responding with: messagePut');
+            //console.log('CoAP PUT: ' + req.url)
+            putHandler.handle(req, res)
+			//res.end('Responding with: messagePut');
         }
         else if (req.method == "POST") {
             //console.log('CoAP POST: ' + req.url)
@@ -29,8 +35,9 @@ module.exports = function (program) {
             //res.end('Responding with: messagePost');
         }
         else if (req.method == "DELETE") {
-            console.log('CoAP DELETE: ' + req.url)
-            res.end('Responding with: messageDelete');
+            //console.log('CoAP DELETE: ' + req.url)
+            deleteHandler.handle(req, res)
+			//res.end('Responding with: messageDelete');
         }
       //res.end('GET - CoAP says: Hello ' + req.url.split('/')[1] + '\n')
     })
