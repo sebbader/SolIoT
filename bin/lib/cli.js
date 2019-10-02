@@ -24,7 +24,7 @@ module.exports = function startCli (server) {
   
   // sba extension:
   loadCoap(program)
-  loadMqtt()
+  loadMqtt(program)
 }
 
 function getVersion () {
