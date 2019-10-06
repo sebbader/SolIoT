@@ -3,13 +3,17 @@
  */
 
 var mqtt = require('mqtt')
+require('../../lib/iot/mqtt/DeleteHandler')
 require('../../lib/iot/mqtt/CreateHandler')
 require('../../lib/iot/mqtt/UpdateHandler')
 require('../../lib/iot/mqtt/DeleteHandler')
 
 module.exports = function (program) {
 	
-	var client  = mqtt.connect('mqtt://localhost:1883')
+	var iotUtils = new IotUtils()
+	var argv = iotUtils.getArgv(program)
+
+	var client  = mqtt.connect(argv.mqttBroker)
 //	var client  = mqtt.connect('mqtt://test.mosquitto.org')
 	
 	var updateHandler = new UpdateHandler(program)
@@ -18,9 +22,9 @@ module.exports = function (program) {
 	
 	client.on('connect', function () {
 		
-		client.subscribe('solid/+/create', function (err) {
+		client.subscribe(argv.mqttCreateTopic, function (err) {
 			if (!err) {
-				console.log('Successfully subscribed to topic "solid/+/create"')
+				console.log('Successfully subscribed to topic "' + argv.mqttCreateTopic + '"')
 			} else {
 				console.log(err)
 			}
@@ -43,17 +47,17 @@ module.exports = function (program) {
 				if (topicParts[topicParts.length - 1] == 'create'){
 					console.log('MQTT CREATE in ' + topic)
 					createHandler.handle(topic, message)
-					client.subscribe('solid/' + topicParts[1], function (err) {
+					client.subscribe(argv.mqttMsgTopics + topicParts[1], function (err) {
 						if (!err) {
-							console.log('Successfully subscribed to topic "solid/' + topicParts[1] + '"')
+							console.log('Successfully subscribed to topic "' + argv.mqttMsgTopics + '/' + topicParts[1] + '"')
 						} else {
 							console.log(err)
 						}
 						
 					})
-					client.subscribe('solid/' + topicParts[1] + '/delete', function (err) {
+					client.subscribe(argv.mqttMsgTopics + '/' + topicParts[1] + '/delete', function (err) {
 						if (!err) {
-							console.log('Successfully subscribed to topic "solid/' + topicParts[1] + '/delete"')
+							console.log('Successfully subscribed to topic "' + argv.mqttMsgTopics + '/' + topicParts[1] + '/delete"')
 						} else {
 							console.log(err)
 						}
@@ -64,17 +68,17 @@ module.exports = function (program) {
 				if (topicParts[topicParts.length - 1] == 'delete'){
 					console.log('MQTT DELETE in ' + topic)
 					deleteHandler.handle(topic, message)
-					client.unsubscribe('solid/' + topicParts[1], function (err) {
+					client.unsubscribe(argv.mqttMsgTopics + '/' + topicParts[1], function (err) {
 						if (!err) {
-							console.log('Successfully unsubscribed from topic "solid/' + topicParts[1] + '"')
+							console.log('Successfully unsubscribed from topic "' + argv.mqttMsgTopics + '/' + topicParts[1] + '"')
 						} else {
 							console.log(err)
 						}
 						
 					})
-					client.unsubscribe('solid/' + topicParts[1] + '/delete', function (err) {
+					client.unsubscribe(argv.mqttMsgTopics + '/' + topicParts[1] + '/delete', function (err) {
 						if (!err) {
-							console.log('Successfully unsubscribed from topic "solid/' + topicParts[1] + '/delete"')
+							console.log('Successfully unsubscribed from topic "' + argv.mqttMsgTopics + '/' + topicParts[1] + '/delete"')
 						} else {
 							console.log(err)
 						}

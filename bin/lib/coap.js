@@ -12,6 +12,9 @@ require('../../lib/iot/coap/PutHandler')
 module.exports = function (program) {
     var server = coap.createServer()
     
+	var iotUtils = new IotUtils()
+	var argv = iotUtils.getArgv(program)
+    
     var getHandler = new CoapGetHandler(program)
     var postHandler = new PostHandler(program)	
 	var deleteHandler = new DeleteHandler(program)
@@ -43,9 +46,9 @@ module.exports = function (program) {
     })
     
     // the default CoAP port is 5683
-    server.listen(683, function() {
-        console.log('CoAP server listens at port 683.')
-        var req = coap.request('coap://localhost:683/profile/card#me')
+    server.listen(argv.coapPort, function() {
+        console.log('CoAP server listens at port ' + argv.coapPort + '.')
+        var req = coap.request('coap://localhost:' + argv.coapPort + '/profile/card#me')
     
       req.on('response', function(res) {
         res.pipe(process.stdout)
@@ -61,7 +64,7 @@ module.exports = function (program) {
     })
     
 /*
-    server.listen(683/*, function(req, resp) {
+    server.listen(5683/*, function(req, resp) {
         //resp.setOption("555", [new Buffer('CoAP says: Hello ' + req.url.split('/')[1] + '\n')])
         resp.end('CoAP says: Hello ' + req.url.split('/')[1] + '\n')
     }
@@ -83,7 +86,7 @@ module.exports = function (program) {
             res.end('messageDelete');
         }
     });
-    server.listen(683, function() {
+    server.listen(5683, function() {
         console.log('Test CoAP Server Started');
     });
     */
