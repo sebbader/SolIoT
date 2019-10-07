@@ -9,8 +9,13 @@ const path = require('path')
 
 const loadCoap = require('./coap')
 const loadMqtt = require('./mqtt')
+const evalUtils = require('../../lib/iot/evalUtils')
 
 module.exports = function startCli (server) {
+
+  // SOLIOT evaluation
+  var start = new Date()
+
   program.version(getVersion())
 
   loadInit(program)
@@ -25,6 +30,10 @@ module.exports = function startCli (server) {
   // sba extension:
   loadCoap(program)
   loadMqtt(program)
+
+  var time = new Date() - start;
+  var evaluation = new EvalUtils(program)
+  evaluation.sendEval({"start-time": time})
 }
 
 function getVersion () {

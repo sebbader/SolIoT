@@ -8,6 +8,8 @@ require('../../lib/iot/coap/PostHandler')
 require('../../lib/iot/coap/DeleteHandler')
 require('../../lib/iot/coap/PutHandler')
 
+const evalUtils = require('../../lib/iot/evalUtils')
+
     
 module.exports = function (program) {
     var server = coap.createServer()
@@ -49,11 +51,19 @@ module.exports = function (program) {
     server.listen(argv.coapPort, function() {
         console.log('CoAP server listens at port ' + argv.coapPort + '.')
         var req = coap.request('coap://localhost:' + argv.coapPort + '/profile/card#me')
+
+	  // SOLIOT evaluation
+	  var start = new Date()
     
       req.on('response', function(res) {
         res.pipe(process.stdout)
         res.on('end', function() {
-          //process.exit(0)
+			//process.exit(0)
+
+			// SOLIOT evaluation
+			var time = new Date() - start;
+			var evaluation = new EvalUtils(program)
+			evaluation.sendEval({"coap-reuest-time": time})
         })
       })
 

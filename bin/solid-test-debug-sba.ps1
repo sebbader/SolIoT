@@ -4,6 +4,7 @@
 # start debugging!
 
 # start the solid server with node in debug mode
+$env:DEBUG="soliot:*"
 node --inspect .\bin\solid-debug-sba.js start
 
 # prevent powershell to close instantly
