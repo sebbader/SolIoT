@@ -9,7 +9,7 @@ const path = require('path')
 
 const loadCoap = require('./coap')
 const loadMqtt = require('./mqtt')
-const evalUtils = require('../../lib/iot/evalUtils')
+const evalUtils = require('../../lib/iot/EvalUtils')
 
 module.exports = function startCli (server) {
 
