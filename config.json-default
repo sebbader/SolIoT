@@ -1,7 +1,11 @@
 {
   "root": "./data",
   "port": "8443",
+  "coapPort": "5683",
   "serverUri": "https://localhost:8443",
+  "mqttBroker": "mqtt://localhost:1883",
+  "mqttCreateTopic": "soliot/+/create",
+  "mqttMsgTopics": "soliot/*",
   "webid": true,
   "mount": "/",
   "configPath": "./config",
