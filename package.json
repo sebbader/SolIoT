@@ -99,6 +99,7 @@
     "recursive-readdir": "^2.1.0",
     "request": "^2.88.0",
     "rimraf": "^2.5.0",
+    "shacl": "github:TopQuadrant/shacl-js",
     "solid-auth-client": "^2.3.1",
     "solid-namespace": "^0.1.0",
     "solid-ws": "^0.3.1",

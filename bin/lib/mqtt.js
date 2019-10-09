@@ -12,7 +12,6 @@ module.exports = function (program) {
 	
 	var iotUtils = new IotUtils()
 	var argv = iotUtils.getArgv(program)
-
 	var client  = mqtt.connect(argv.mqttBroker)
 //	var client  = mqtt.connect('mqtt://test.mosquitto.org')
 	
