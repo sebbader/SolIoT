@@ -25,24 +25,64 @@ module.exports = function (program) {
     // add handlers for CoAP methods
     server.on('request', function(req, res) {
         if (req.method == "GET") {
+
+        	// SOLIOT evaluation
+	  		var start = new Date()
+
             //console.log('CoAP GET: ' + req.url)
             getHandler.handle(req, res)
             //res.end('Responding with: messageGet');
+
+            
+			// SOLIOT evaluation
+			var time = new Date() - start;
+			var evaluation = new EvalUtils(program)
+			evaluation.sendEval({"coap-server-get-time": time})
         }
         else if (req.method == "PUT") {
+
+        	// SOLIOT evaluation
+	  		var start = new Date()
+
             //console.log('CoAP PUT: ' + req.url)
             putHandler.handle(req, res)
 			//res.end('Responding with: messagePut');
+
+            
+			// SOLIOT evaluation
+			var time = new Date() - start;
+			var evaluation = new EvalUtils(program)
+			evaluation.sendEval({"coap-server-put-time": time})
         }
         else if (req.method == "POST") {
+
+        	// SOLIOT evaluation
+	  		var start = new Date()
+
             //console.log('CoAP POST: ' + req.url)
             postHandler.handle(req, res)
             //res.end('Responding with: messagePost');
+
+            
+			// SOLIOT evaluation
+			var time = new Date() - start;
+			var evaluation = new EvalUtils(program)
+			evaluation.sendEval({"coap-server-post-time": time})
         }
         else if (req.method == "DELETE") {
+
+        	// SOLIOT evaluation
+	  		var start = new Date()
+
             //console.log('CoAP DELETE: ' + req.url)
             deleteHandler.handle(req, res)
 			//res.end('Responding with: messageDelete');
+
+            
+			// SOLIOT evaluation
+			var time = new Date() - start;
+			var evaluation = new EvalUtils(program)
+			evaluation.sendEval({"coap-server-delete-time": time})
         }
       //res.end('GET - CoAP says: Hello ' + req.url.split('/')[1] + '\n')
     })
@@ -63,7 +103,7 @@ module.exports = function (program) {
 			// SOLIOT evaluation
 			var time = new Date() - start;
 			var evaluation = new EvalUtils(program)
-			evaluation.sendEval({"coap-reuest-time": time})
+			evaluation.sendEval({"coap-client-server-get-time": time})
         })
       })
 
