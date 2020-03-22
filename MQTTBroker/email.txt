@@ -1,0 +1,21 @@
+Hallo Sebastian,
+
+im Anhang ist das ZIP-Archiv mit dem Dockerfile und der Conf Datei für den Mosquitto Broker. 
+
+„max_queued_messages 0“ bewirkt, dass der Broker unendlich viele Messages in die Warteschlange aufnimmt (also bis er irgendwann abschmiert weil z. B. der RAM ausgeht). In Produktion sollte man das nicht so konfigurieren.
+
+Die Conf Datei muss in den Container gemountet werden, etwa so (auszug unserer docker-compose.yml):
+
+  mqttbroker:
+    image: eclipse-mosquitto
+    ports: 
+    - "9883:9883" 
+    - "1883:1883"
+    volumes:
+    - ./MQTTBroker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+Zusätzlich haben wir bei jeder Publish-Methode noch etwas extra-Code zur Fehlerbehandlung, weil trotzdem immer mal wieder eine Nachricht verworfen wird, wenn der MQTT-Client mit dem Senden nicht hinterher kommt (siehe MqttPublisher.java)
+
+
+Gruß,
+Christian

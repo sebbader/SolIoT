@@ -23,3 +23,5 @@ templates/**
 views/**
 .settings/**
 .project
+lib/iot/.settings/**
+lib/iot/coap/.settings/**

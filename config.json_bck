@@ -1,0 +1,23 @@
+{
+  "root": "C:\\Users\\sbader\\git\\node-solid-server\\data",
+  "evalserver": "http://example.org#:19919/handleMeasurement",
+  "port": "8443",
+  "coapPort": "5683",
+  "serverUri": "https://localhost:8443",
+  "mqttBroker": "mqtt://localhost:1883",
+  "mqttCreateTopic": "soliot/+/create",
+  "mqttMsgTopics": "soliot/*",
+  "webid": true,
+  "mount": "/",
+  "configPath": "C:\\Users\\sbader\\git\\node-solid-server",
+  "configFile": "C:\\Users\\sbader\\git\\node-solid-server\\config.json",
+  "dbPath": "C:\\Users\\sbader\\git\\node-solid-server\\.db",
+  "sslKey": "C:\\Users\\sbader\\.ssh\\solid_dev\\server.key",
+  "sslCert": "C:\\Users\\sbader\\.ssh\\solid_dev\\server.crt",
+  "multiuser": false,
+  "server": {
+    "name": "localhost",
+    "description": "",
+    "logo": ""
+  }
+}
