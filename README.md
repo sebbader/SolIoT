@@ -216,31 +216,28 @@ Configuring Solid via the config file can be a concise and convenient method and
 
 ## Use Docker
 
-Build with:
+Pull with:
 
 ```bash
-docker build -t node-solid-server .
+docker pull nodesolidserver/node-solid-server
 ```
 
 Run with:
 ```bash
-docker run -p 8443:8443 --name solid node-solid-server
+docker run -p 8443:8443 --name solid nodesolidserver/node-solid-server
 ```
 
 This will enable you to login to solid on https://localhost:8443 and then create a new account
 but not yet use that account. After a new account is made you will need to create an entry for 
-it in your local (/etc/)hosts file in line with the account and subdomain i.e. 
-
+it in your local (/etc/)hosts file in line with the account and subdomain, i.e. --
+```pre
 127.0.0.1	newsoliduser.localhost
-
+```
 Then you'll be able to use solid as intended.
 
-You can modify the config within the docker container as follows:
+For details on how to configure and use the docker image, please take a look at [docker-image/Readme.md](https://github.com/solid/node-solid-server/tree/master/docker-image).
 
- - Copy the config to the current directory with: `docker cp solid:/usr/src/app/config.json .`
- - Edit the `config.json` file
- - Copy the file back with `docker cp config.json solid:/usr/src/app/`
- - Restart the server with `docker restart solid`
+We have automatic builds set up, so commits to master will trigger a build of https://hub.docker.com/r/nodesolidserver/node-solid-server.
 
 ## Library Usage
 
@@ -264,18 +261,18 @@ default settings.
 
 ```javascript
 {
-  cache: 0, // Set cache time (in seconds), 0 for no cache
-  live: true, // Enable live support through WebSockets
-  root: './', // Root location on the filesystem to serve resources
-  secret: 'node-ldp', // Express Session secret key
-  cert: false, // Path to the ssl cert
-  key: false, // Path to the ssl key
-  mount: '/', // Where to mount Linked Data Platform
-  webid: false, // Enable WebID+TLS authentication
-  suffixAcl: '.acl', // Suffix for acl files
-  corsProxy: false, // Where to mount the CORS proxy
-  errorHandler: false, // function(err, req, res, next) to have a custom error handler
-  errorPages: false // specify a path where the error pages are
+  cache:        0,           // Set cache time (in seconds), 0 for no cache
+  live:         true,        // Enable live support through WebSockets
+  root:         './',        // Root location on the filesystem to serve resources
+  secret:       'node-ldp',  // Express Session secret key
+  cert:         false,       // Path to the ssl cert
+  key:          false,       // Path to the ssl key
+  mount:        '/',         // Where to mount Linked Data Platform
+  webid:        false,       // Enable WebID+TLS authentication
+  suffixAcl:    '.acl',      // Suffix for acl files
+  corsProxy:    false,       // Where to mount the CORS proxy
+  errorHandler: false,       // function(err, req, res, next) to have a custom error handler
+  errorPages:   false        // specify a path where the error pages are
 }
 ```
 
@@ -401,14 +398,15 @@ it. It is currently adviceable to remove it or set it inactive rather
 than set a large quota, because the current implementation will impair
 write performance if there is a lot of data.
 
-## Contribute to Solid
+## Get help and contribute
 
 Solid is only possible because of a large community of [contributors](https://github.com/solid/node-solid-server/blob/master/CONTRIBUTORS.md).
 A heartfelt thank you to everyone for all of your efforts!
 
-You can help us too:
+You can receive or provide help too:
 
-- [Join us in Gitter](https://gitter.im/solid/chat) to help with development or to hang out with us :)
+- [Join us in Gitter](https://gitter.im/solid/chat) to chat about Solid or to hang out with us :)
+- [NSS Gitter channel](https://gitter.im/solid/node-solid-server) for specific (installation) advice about this code base
 - [Create a new issue](https://github.com/solid/node-solid-server/issues/new) to report bugs
 - [Fix an issue](https://github.com/solid/node-solid-server/issues)
 - Reach out to Jackson at jacksonm@inrupt.com to become more involved in maintaining Node Solid Server
