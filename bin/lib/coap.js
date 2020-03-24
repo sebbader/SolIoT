@@ -90,7 +90,7 @@ module.exports = function (program) {
     // the default CoAP port is 5683
     server.listen(argv.coapPort, function() {
         console.log('CoAP server listens at port ' + argv.coapPort + '.')
-        var req = coap.request('coap://localhost:' + argv.coapPort + '/profile/card#me')
+        var req = coap.request('coap://127.0.0.1:' + argv.coapPort + '/profile/card#me')
 
 	  // SOLIOT evaluation
 	  var start = new Date()
