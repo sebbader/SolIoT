@@ -1,0 +1,44 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix aas: <https://asset-shell.io/AAS/2/0/> .
+
+<./> a aas:Submodel ;
+    rdfs:label "Service"^^xsd:string ;
+    aas:idShort "Service"^^xsd:string ;
+    aas:identification <http://www.company.com/ids/sm/6053_5072_7091_5102> ;
+    aas:semanticId [
+        a aas:Reference ;
+        aas:key [
+            a aas:Key ;
+            aas:index "0"^^xsd:integer ;
+            aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ;
+			aas:local "false"^^xsd:boolean ;
+            aas:value "https://www.hsu-hh.de/aut/aas/service"^^xsd:string ;
+            aas:idType aas:IRI_IDENTIFIER_TYPE ;
+        ] ;
+    ];
+    aas:kind aas:INSTANCE ;
+    aas:submodelElement [
+        rdf:type aas:submodelElementCollection ;
+        aas:idShort "ContactInfo"^^xsd:string ;
+        rdfs:label "ContactInfo"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+				aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "https://www.hsu-hh.de/aut/aas/contactinfo"^^xsd:string ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        # todo
+    ] ;
+.

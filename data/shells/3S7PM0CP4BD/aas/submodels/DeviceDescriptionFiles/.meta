@@ -1,0 +1,46 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix aas: <https://asset-shell.io/AAS/2/0/> .
+
+<./> a aas:Submodel ;
+    rdfs:label "DeviceDescriptionFiles"^^xsd:string ;
+    aas:idShort "DeviceDescriptionFiles"^^xsd:string ;
+    aas:identification <http://smart.festo.com/demo/sm/instance/1/1/13B7CCD9BF7A3F24> ;
+    aas:semanticId [
+        a aas:Reference ;
+        aas:key [
+            a aas:Key ;
+            aas:index "0"^^xsd:integer ;
+            aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ;
+			aas:local "false"^^xsd:boolean ;
+            aas:value "http://admin-shell/sample/submodel/type/device-description-files"^^xsd:string ;
+            aas:idType aas:IRI_IDENTIFIER_TYPE ;
+        ] ;
+    ];
+    aas:kind aas:INSTANCE ;
+    aas:submodelElement [
+        rdf:type aas:File ;
+        aas:idShort "IODD"^^xsd:string ;
+        rdfs:label "IODD"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+				aas:type aas:CONCEPT_DESCRIPTION_IDENTIFIABLE_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "http://admin-shell.io/sample/conceptdescriptions/437857438753457473"^^xsd:string ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:mimetype "application/general"^^xsd:string ;
+        aas:value "Festo-SPAE-kPa-20171025-IODD1.1.zip"^^xsd:string ;
+        aas:value <./Festo-SPAE-kPa-20171025-IODD1.1.zip> ;
+    ] ;
+.

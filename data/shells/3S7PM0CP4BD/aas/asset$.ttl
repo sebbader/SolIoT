@@ -1,0 +1,21 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix aas: <https://asset-shell.io/AAS/2/0/> .
+
+<./> a aas:Asset ;
+    rdfs:label "FPK_3s7plfdrs35"^^xsd:string ;
+    aas:idShort "FPK_3s7plfdrs35"^^xsd:string ;
+    aas:description "Festo OVEL Vacuum generator"@en ;
+    aas:description "Festo OVEL Vakuumsaugdüse"@de ;
+    rdfs:comment "Festo OVEL Vacuum generator"@en ;
+    rdfs:comment "Festo OVEL Vakuumsaugdüse"@de ;
+    aas:id [
+        a aas:Identifier ;
+        aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+        aas:id "http://PK.FESTO.COM/3S7PM0CP4BD"^^xsd:anyUri ;
+    ] ;
+.

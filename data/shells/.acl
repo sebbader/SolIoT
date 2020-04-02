@@ -1,0 +1,44 @@
+# ACL resource for the profile folder
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ids: <https://w3id.org/idsa/core/> .
+@prefix idsc: <https://w3id.org/idsa/code/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+
+# The owner has all permissions
+<#owner>
+    a acl:Authorization;
+    acl:agent <https://sebastianrbader.inrupt.net/profile/card#me>;
+    acl:accessTo <./>;
+    acl:mode acl:Read, acl:Write, acl:Control.
+<#ownerContract> a ids:Authorization ;
+    ids:provider <https://sebastianrbader.inrupt.net/profile/card#me>;
+    ids:consumer <https://sebastianrbader.inrupt.net/profile/card#me>;
+    ids:permission [
+        a ids:Permission ;
+        ids:action idsc:USE ;
+        ids:assigner <https://sebastianrbader.inrupt.net/profile/card#me>;
+        ids:assignee <https://sebastianrbader.inrupt.net/profile/card#me>;
+    ] ;
+.
+# Both express exactly the same content. 
+<#owner> owl:sameAs <#ownerContract> .
+
+
+# The public has read permissions
+<#public>
+    a acl:Authorization;
+    acl:agentClass foaf:Agent;
+    acl:accessTo <./>;
+    acl:mode acl:Read.
+<#publicContract> a ids:Authorization ;
+    ids:provider <https://sebastianrbader.inrupt.net/profile/card#me>;
+    ids:permission [
+        a ids:Permission ;
+        ids:action idsc:READ ;
+        ids:assigner <https://sebastianrbader.inrupt.net/profile/card#me>;
+    ] ;
+.
+# Both express exactly the same content. 
+<#public> owl:sameAs <#publicContract> .
