@@ -5,6 +5,6 @@
 <#public>
     a acl:Authorization;
     acl:agentClass foaf:Agent;  # everyone
-    acl:accessTo </>;
+    #acl:accessTo </>;
     acl:default </common/>;
     acl:mode acl:Read.
