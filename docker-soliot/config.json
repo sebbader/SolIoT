@@ -1,0 +1,23 @@
+{
+  "root": "./data",
+  "port": "8443",
+  "evalserver": "http://ec2-18-222-195-79.us-east-2.compute.amazonaws.com:19919/handleMeasurement",
+  "coapPort": "5683",
+  "serverUri": "https://localhost:8443",
+  "mqttBroker": "mqtt://172.31.35.127:1883",
+  "mqttCreateTopic": "soliot/+/create",
+  "mqttMsgTopics": "soliot/*",
+  "webid": true,
+  "mount": "/",
+  "configPath": "./config",
+  "configFile": "./config.json",
+  "dbPath": "./.db",
+  "sslKey": "solid-temporary.key",
+  "sslCert": "solid-temporary.crt",
+  "multiuser": false,
+  "server": {
+    "name": "soliot",
+    "description": "This is a SOLIOT prototype server, an extension of the SOLID NodeJS reference implementation.",
+    "logo": ""
+  }
+}

@@ -11,7 +11,7 @@
 /config/email-templates
 /config/templates
 /config/views
-/data
+#/data
 /coverage
 /node_modules
 /npm-debug.log
@@ -24,4 +24,4 @@ views/**
 .settings/**
 .project
 .vs/
-.vscode/
+#.vscode/

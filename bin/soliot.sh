@@ -4,4 +4,4 @@
 export DEBUG="soliot:*"
 
 # start the server
-node ./solid start
+node /node-solid-server/bin/solid start --no-reject-unauthorized
