@@ -7,7 +7,7 @@
 
         {
             "env": {
-                "DEBUG": "solid:*",
+                "DEBUG": "soliot:*",
                 "SOLIOT_EVALKEY": "frnhfr//solid!!",
                 "SOLIOT_SERVER_URI": "http://localhost:8443/"
             },

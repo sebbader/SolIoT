@@ -16,7 +16,7 @@ cp -R ../index.html ./node-solid-server/
 cp -R ../favicon.ico ./node-solid-server/
 cp -R ../node-solid-server.iml ./node-solid-server/
 cp -R ../index.js ./node-solid-server/
-cp -R ../config.json ./node-solid-server/
+cp -R ./config.json ./node-solid-server/
 cp -R ../package.json ./node-solid-server/
 cp -R ../config.json-default ./node-solid-server/
 cp -R ../.npmignore ./node-solid-server/

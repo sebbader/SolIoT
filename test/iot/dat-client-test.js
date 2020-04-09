@@ -11,7 +11,7 @@ serialiseJwtTest = function() {
         "@context": "https://w3id.org/idsa/contexts/3.0.0/context.json",
         "@type":"ids:DatPayload",
         "iss": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
-        "sub": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
+        "sub": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:E1:8C:C7:B6:85:79:A8:23:A6:CB:03:AB:17:50:2F:E6:65:43:5D:F9",
         "exp": "1h",
         "iat": 1585149036,
         "nbf": 1585149036,
