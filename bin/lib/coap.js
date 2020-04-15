@@ -12,6 +12,11 @@ require('../../lib/iot/EvalUtils')
 
     
 module.exports = function (program) {
+
+    var stringToBuffer = function(string) { return Buffer.from(string, 'utf8'); }
+    var bufferToString = function(buffer) { 
+        return buffer.toString(); }
+    coap.registerOption('SecurityToken',stringToBuffer, bufferToString)
     var server = coap.createServer()
     
 	var iotUtils = new IotUtils()
