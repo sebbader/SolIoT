@@ -6,8 +6,8 @@
 <#public>
     a acl:Authorization;
     acl:agentClass foaf:Agent;
-    acl:accessTo </public>;
-    acl:accessTo </things>;
+    acl:accessTo <./>;
+    acl:default <./>;
     acl:mode acl:Read.
 
 # The owner has full access to every resource in their pod.
@@ -19,7 +19,7 @@
     # Optional owner email, to be used for account recovery:
     acl:agent <mailto:sebastian.r.bader@web.de>;
     # Set the access to the root storage folder itself
-    acl:accessTo </private>;
+    acl:accessTo </>;
     # All resources will inherit this authorization, by default
     acl:default </>;
     # The owner has all of the access modes allowed

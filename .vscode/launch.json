@@ -44,6 +44,27 @@
 
         {
             "env": {
+                "DEBUG":"soliot:*",
+                "mqttBroker": "mqtt://172.0.0.1:2883",
+            },
+            "request": "launch",
+            "name": "Test MQTT Publish",
+            "type": "node",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "-u",
+                "bdd",// set to bdd, not tdd
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceFolder}/test/iot/mqtt-publish-test.js"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+
+        {
+            "env": {
                 "DEBUG":"soliot:*"
             },
             "request": "launch",

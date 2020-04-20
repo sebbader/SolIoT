@@ -8,7 +8,7 @@ const { spawnSync } = require('child_process')
 const path = require('path')
 
 const loadCoap = require('./coap')
-const loadMqtt = require('./mqtt')
+require('./mqtt')
 const evalUtils = require('../../lib/iot/EvalUtils')
 
 module.exports = function startCli (server) {
@@ -29,7 +29,8 @@ module.exports = function startCli (server) {
   
   // sba extension:
   loadCoap(program)
-  loadMqtt(program)
+  var mqtt = new MQTT()
+  mqtt.loadMqtt(program)
 
   var time = new Date() - start;
   var evaluation = new EvalUtils(program)

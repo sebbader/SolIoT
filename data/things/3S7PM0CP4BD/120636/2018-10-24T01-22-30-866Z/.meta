@@ -1,0 +1,27 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
+@prefix idsSensor: <http://www.iml.fraunhofer.de/ids/sensor#> .
+
+
+#One Observation with multiple results containing all data previously held by json
+<./> rdf:type sosa:Observation ;
+    rdfs:label "Observations made by sensor 120636/sensor at 2018-10-24T01:22:30.866Z" ;
+    sosa:madeBySensor <120636/GenericTrackerSensor> ;
+    sosa:resultTime "2018-10-24T01:22:30.866Z"^^xsd:dateTime ;
+    sosa:hasResult <./maximumTemperature> ;
+    sosa:hasResult <./currentTemperature> ;
+    sosa:hasResult <./minimumTemperature> ;
+    sosa:hasResult <./lastAccelerometerMotionHistoryCount> ;
+    sosa:hasResult <./lastMagnetometerMotionHistoryCount> ;
+    sosa:hasResult <./lastAccelerometerMotionHistory> ;
+    sosa:hasResult <./orientationChangeCount> ;
+    sosa:hasResult <./reedActivationCount> ;
+    sosa:hasResult <./lastMagnetometerMotionHistory> ;
+    sosa:hasResult <./freeFallCount> ;
+    idsSensor:reportReason "SCHEDULED" ;
+    idsSensor:text "Tracker trigger activated" ;
+    idsSensor:type "toil_TrackerEvent" .
