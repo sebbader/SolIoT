@@ -481,6 +481,12 @@ describe('HTTP APIs', function () {
         .set('content-type', 'text/turtle')
         .expect(201, done)
     })
+    it('should reject create .acl resource, if contentType not text/turtle', function (done) {
+      server.put('/put-resource-1.acl')
+        .send(putRequestBody)
+        .set('content-type', 'text/plain')
+        .expect(415, done)
+    })
     it('should create directories if they do not exist', function (done) {
       server.put('/foo/bar/baz.ttl')
         .send(putRequestBody)
@@ -506,7 +512,8 @@ describe('HTTP APIs', function () {
       // Ensure all these are finished before running tests
       return Promise.all([
         rm('/false-file-48484848'),
-        createTestContainer('delete-test-empty-container'),
+//        createTestContainer('delete-test-empty-container'),
+        createTestResource('/delete-test-empty-container/test.txt.acl'),
         createTestResource('/put-resource-1.ttl'),
         createTestResource('/delete-test-non-empty/test.ttl')
       ])
@@ -528,7 +535,7 @@ describe('HTTP APIs', function () {
         .expect(409, done)
     })
 
-    it('should delete a new and empty container', function (done) {
+    it('should delete a new and empty container - with file.acl', function (done) {
       server.delete('/delete-test-empty-container/')
         .end(() => {
           server.get('/delete-test-empty-container/')
@@ -541,6 +548,7 @@ describe('HTTP APIs', function () {
       // Clean up after DELETE API tests
       rm('/put-resource-1.ttl')
       rm('/delete-test-non-empty/')
+      rm('/delete-test-empty-container/test.txt.acl')
       rm('/delete-test-empty-container/')
     })
   })
@@ -590,6 +598,13 @@ describe('HTTP APIs', function () {
     it('should error with 415 if the body is provided but there is no content-type header', function (done) {
       server.post('/post-tests/')
         .set('slug', 'post-resource-rdf-no-content-type')
+        .send(postRequest1Body)
+        .set('content-type', '')
+        .expect(415, done)
+    })
+    it('should error with 415 if file.acl and contentType not text/turtle', function (done) {
+      server.post('/post-tests/')
+        .set('slug', 'post-acl-no-content-type.acl')
         .send(postRequest1Body)
         .set('content-type', '')
         .expect(415, done)
