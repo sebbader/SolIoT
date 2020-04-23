@@ -9,12 +9,13 @@ const path = require('path')
 
 const loadCoap = require('./coap')
 require('./mqtt')
-const evalUtils = require('../../lib/iot/EvalUtils')
+const EvalUtils = require('../../lib/iot/EvalUtils')
 
 module.exports = function startCli (server) {
 
   // SOLIOT evaluation
   var start = new Date()
+  EvalUtils.program = program
 
   program.version(getVersion())
 
@@ -23,6 +24,7 @@ module.exports = function startCli (server) {
   loadInvalidUsernames(program)
   loadMigrateLegacyResources(program)
   loadUpdateIndex(program)
+
 
   program.parse(process.argv)
   if (program.args.length === 0) program.help()
@@ -33,7 +35,7 @@ module.exports = function startCli (server) {
   mqtt.loadMqtt(program)
 
   var time = new Date() - start;
-  var evaluation = new EvalUtils(program)
+  var evaluation = new EvalUtils()
   evaluation.sendEval({"start-time": time})
 }
 

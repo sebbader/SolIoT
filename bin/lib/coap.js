@@ -8,7 +8,7 @@ require('../../lib/iot/coap/PostHandler')
 require('../../lib/iot/coap/DeleteHandler')
 require('../../lib/iot/coap/PutHandler')
 
-require('../../lib/iot/EvalUtils')
+const EvalUtils = require('../../lib/iot/EvalUtils')
 
     
 module.exports = function (program) {
@@ -25,7 +25,9 @@ module.exports = function (program) {
     var getHandler = new CoapGetHandler(program)
     var postHandler = new PostHandler(program)	
 	var deleteHandler = new DeleteHandler(program)
-	var putHandler = new PutHandler(program)
+    var putHandler = new PutHandler(program)
+    
+    var evaluation = new EvalUtils()
     
     // add handlers for CoAP methods
     server.on('request', function(req, res) {
@@ -41,7 +43,6 @@ module.exports = function (program) {
             
 			// SOLIOT evaluation
 			var time = new Date() - start;
-			var evaluation = new EvalUtils(program)
 			evaluation.sendEval({"coap-server-get-time": time})
         }
         else if (req.method == "PUT") {
@@ -56,7 +57,6 @@ module.exports = function (program) {
             
 			// SOLIOT evaluation
 			var time = new Date() - start;
-			var evaluation = new EvalUtils(program)
 			evaluation.sendEval({"coap-server-put-time": time})
         }
         else if (req.method == "POST") {
@@ -71,7 +71,6 @@ module.exports = function (program) {
             
 			// SOLIOT evaluation
 			var time = new Date() - start;
-			var evaluation = new EvalUtils(program)
 			evaluation.sendEval({"coap-server-post-time": time})
         }
         else if (req.method == "DELETE") {
@@ -86,7 +85,6 @@ module.exports = function (program) {
             
 			// SOLIOT evaluation
 			var time = new Date() - start;
-			var evaluation = new EvalUtils(program)
 			evaluation.sendEval({"coap-server-delete-time": time})
         }
       //res.end('GET - CoAP says: Hello ' + req.url.split('/')[1] + '\n')
