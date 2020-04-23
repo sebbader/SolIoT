@@ -9,6 +9,7 @@ require('../../lib/iot/coap/DeleteHandler')
 require('../../lib/iot/coap/PutHandler')
 
 const EvalUtils = require('../../lib/iot/EvalUtils')
+const IotUtils = require('../../lib/iot/IotUtils')
 
     
 module.exports = function (program) {

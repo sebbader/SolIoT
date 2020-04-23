@@ -9,6 +9,8 @@ require('../../lib/iot/mqtt/CreateHandler')
 require('../../lib/iot/mqtt/UpdateHandler')
 require('../../lib/iot/mqtt/DeleteHandler')
 
+const IotUtils = require('../../lib/iot/IotUtils')
+
 var client;
 
 MQTT = function() {
