@@ -14,8 +14,18 @@
 <./> a td:ActionAffordance ;
     td:title "READ Metadata" ;
     td:description "Receive the metadata (header) of this RDF resource."@en ;
-    td:forms [
-        td:op td:readproperty ;
+    td:forms <#form> ;
+    td:input <#input> ;
+    td:output <#output> ;
+    td:safe true ;
+    td:idempotent true ;
+.
+
+<#input> td:readOnly true .
+
+<#output> td:readOnly true .
+
+<#form> td:op td:readproperty ;
         td:href "./"^^xsd:anyUri ;
         td:contentType "application/ld+json" ;
         td:contentType "application/td+json" ;
@@ -23,13 +33,4 @@
         cov:queryParam "ldp=head" ;
         htv:methodName "HEAD" ;
         td:security <./.acl> ;
-    ] ;
-    td:input [
-        td:readOnly true ;
-    ] ;
-    td:output [
-        td:readOnly true ;
-    ] ;
-    td:safe true ;
-    td:idempotent true ;
 .

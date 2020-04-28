@@ -5,6 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
 @prefix td: <https://www.w3.org/2019/wot/td#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
 
 #All values from the json are Results made at the same timestamp by the previously defined tracker
 

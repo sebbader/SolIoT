@@ -14,18 +14,20 @@
 <./> a td:EventAffordance ;
     td:title "SUBSCRIBE" ;
     td:description "Receive the state of the device as an RDF representation."@en ;
-    td:subscription [
-        td:href "mqtt://ec2-3-126-245-183.eu-central-1.compute.amazonaws.com:8883"^^xsd:anyUri ;
+    td:subscription  <#subscribtion> ;
+    td:data "application/ld+json" ;
+    td:data "application/td+json" ;
+    td:cancelation <#cancelation> ;
+.
+
+<#subscribtion> td:href "mqtt://ec2-3-126-245-183.eu-central-1.compute.amazonaws.com:8883"^^xsd:anyUri ;
         td:contentType "application/ld+json" ;
         td:contentType "application/td+json" ;
         mqtt:methodName "subscribe" ;
         mqtt:topic "soliot/#" ;
         td:security <./.acl> ;
-    ] ;
-    td:data "application/ld+json" ;
-    td:data "application/td+json" ;
-    td:cancelation [
-        td:href "mqtt://ec2-3-126-245-183.eu-central-1.compute.amazonaws.com:8883"^^xsd:anyUri ;
+.
+
+<#cancelation> td:href "mqtt://ec2-3-126-245-183.eu-central-1.compute.amazonaws.com:8883"^^xsd:anyUri ;
         mqtt:methodName "unsubscribe" ;
-    ] ;
 .

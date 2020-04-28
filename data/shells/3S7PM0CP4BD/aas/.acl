@@ -31,8 +31,8 @@
     a acl:Authorization;
     acl:agentClass foaf:Agent;
     acl:accessTo <./>;
-    acl:accessTo <./submodels/>; # TODO
-    acl:accessTo <./submodels/*>; # TODO
+    acl:accessTo <./asset>;
+    acl:accessTo <./submodels>; # TODO
     acl:default </> ;
     acl:mode acl:Read.
 <#publicContract> a ids:Authorization ;

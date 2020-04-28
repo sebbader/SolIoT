@@ -14,8 +14,15 @@
 <./> a td:ActionAffordance ;
     td:title "EXTEND" ;
     td:description "Add additional properties to this RDF resource."@en ;
-    td:forms [
-        td:op td:readproperty ;
+    td:forms <#form> ;
+    td:input <#input> ;
+    td:safe false ;
+    td:idempotent false ;
+.
+
+<#input> td:writeonly true .
+
+<#form> td:op td:readproperty ;
         td:href "./"^^xsd:anyUri ;
         td:contentType "application/ld+json" ;
         td:contentType "application/td+json" ;
@@ -23,10 +30,4 @@
         cov:queryParam "ldp=patch" ;
         htv:methodName "PATCH" ;
         td:security <./.acl> ;
-    ] ;
-    td:input [
-        td:writeonly true ;
-    ] ;
-    td:safe false ;
-    td:idempotent false ;
 .

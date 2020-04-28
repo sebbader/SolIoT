@@ -8,7 +8,7 @@
     acl:agentClass foaf:Agent;
     acl:accessTo <./>;
     acl:default <./>;
-    acl:mode acl:Read.
+    acl:mode acl:Read,acl:Write .
 
 # The owner has full access to every resource in their pod.
 # Other agents have no access rights,

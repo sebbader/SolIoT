@@ -5,6 +5,7 @@
 @prefix ssn: <http://www.w3.org/ns/ssn/> . 
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 @prefix cdt: <http://w3id.org/lindt/custom_datatypes#> . 
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
 @prefix td: <https://www.w3.org/2019/wot/td#> .
 
 <./> rdf:type ldp:Resource, sosa:Result ; 

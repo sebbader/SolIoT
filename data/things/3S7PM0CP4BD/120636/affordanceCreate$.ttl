@@ -14,18 +14,20 @@
 <./> a td:ActionAffordance ;
     td:title "CREATE" ;
     td:description "Create a new child (component of this device) resource by sending a RDF representation."@en ;
-    td:forms [
-        td:op td:writeproperty ;
+    td:forms <#form> ;
+    td:input <#desc> ;
+    td:safe false ;
+    td:idempotent false ;
+.
+
+<#desc> td:description "Requires the child resource in body of the request, and a Slug header with the desired name."@en ;
+.
+
+<#form> td:op td:writeproperty ;
         td:href "./3S7PM0CP4BD/"^^xsd:anyUri ;
         td:contentType "application/ld+json" ;
         td:contentType "application/td+json" ;
         cov:methodName "post" ;
         htv:methodName "POST" ;
         td:security <./.acl> ;
-    ] ;
-    td:input [
-        td:description "Requires the child resource in body of the request, and a Slug header with the desired name."@en ;
-    ] ;
-    td:safe false ;
-    td:idempotent false ;
 .

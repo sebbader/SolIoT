@@ -14,19 +14,22 @@
 <./> a td:ActionAffordance ;
     td:title "OVERWRITE" ;
     td:description "Overwrite the current state of this resource by sending the new state as a RDF representation."@en ;
-    td:forms [
-        td:op td:readproperty ;
+    td:forms <#form> ;
+    td:input <#input> ;
+    td:safe false ;
+    td:idempotent false ;
+.
+
+<#input>
+        td:readOnly false ;
+        td:writeOnly false ;
+.
+
+<#form> td:op td:readproperty ;
         td:href "./"^^xsd:anyUri ;
         td:contentType "application/ld+json" ;
         td:contentType "application/td+json" ;
         cov:methodName "put" ;
         htv:methodName "PUT" ;
         td:security <./.acl> ;
-    ] ;
-    td:input [
-        td:readOnly false ;
-        td:writeOnly false ;
-    ] ;
-    td:safe false ;
-    td:idempotent false ;
 .

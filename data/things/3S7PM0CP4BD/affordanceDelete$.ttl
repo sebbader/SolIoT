@@ -14,16 +14,17 @@
 <./> a td:ActionAffordance ;
     td:title "DELETE" ;
     td:description "Delete this resource."@en ;
-    td:forms [
-        td:op td:readproperty ;
+    td:forms <#form> ;
+    td:input <#input> ;
+    td:safe false ;
+    td:idempotent true ;
+.
+
+<#input> td:writeonly true .
+
+<#form> td:op td:readproperty ;
         td:href "./"^^xsd:anyUri ;
         cov:methodName "delete" ;
         htv:methodName "DELETE" ;
         td:security <./.acl> ;
-    ] ;
-    td:input [
-        td:writeonly true ;
-    ] ;
-    td:safe false ;
-    td:idempotent true ;
 .

@@ -13,9 +13,10 @@
     aas:description "Festo OVEL Vakuumsaugdüse"@de ;
     rdfs:comment "Festo OVEL Vacuum generator"@en ;
     rdfs:comment "Festo OVEL Vakuumsaugdüse"@de ;
-    aas:id [
-        a aas:Identifier ;
-        aas:idType aas:IRDI_IDENTIFIER_TYPE ;
-        aas:id "http://PK.FESTO.COM/3S7PM0CP4BD"^^xsd:anyUri ;
-    ] ;
+    aas:id <./asset#id> ;
+.
+
+<./asset#id> a aas:Identifier ;
+    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+    aas:id "http://PK.FESTO.COM/3S7PM0CP4BD"^^xsd:anyUri ;
 .
