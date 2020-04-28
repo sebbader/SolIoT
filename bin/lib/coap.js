@@ -18,6 +18,9 @@ module.exports = function (program) {
     var bufferToString = function(buffer) { 
         return buffer.toString(); }
     coap.registerOption('SecurityToken',stringToBuffer, bufferToString)
+    coap.registerFormat("application/td+json", 432)
+    coap.registerFormat("application/ld+json", 433)
+    coap.registerFormat("text/turtle", 02)
     var server = coap.createServer()
     
 	var iotUtils = new IotUtils()

@@ -10,6 +10,7 @@ require('../../lib/iot/mqtt/UpdateHandler')
 require('../../lib/iot/mqtt/DeleteHandler')
 
 const IotUtils = require('../../lib/iot/IotUtils')
+const EvalUtils = require('../../lib/iot/EvalUtils')
 
 var client;
 
@@ -127,9 +128,41 @@ MQTT = function() {
 			//cbStorePut = function (){} 		//fired when message is put into outgoingStore if QoS is 1 or 2
 		}
 		*/
-		client.publish("soliot/update/" + encodeURIComponent(resourceUri), content, /*options,*/ function(err){
+		var start = new Date()
+
+		client.publish("soliot/updated/" + encodeURIComponent(resourceUri), content, /*options,*/ function(err){
+
+			var end = new Date()
 			
 			debugMqtt("Sent 'soliot/updated/'" + encodeURIComponent(resourceUri) + " to the MQTT Broker.")
+			var evaluation = new EvalUtils()
+
+			var topiclength = Buffer.byteLength("soliot/updated/" + encodeURIComponent(resourceUri), 'utf8')
+			var contentlength = Buffer.byteLength(content, 'utf8')
+			//var optionslength = JSON.stringify(req.options).replace(/[\[\]\,\"]/g,'').length // measure the byte size of the options
+
+			let remaining_legth_length
+			if (contentlength < 128) {
+				remaining_legth_length = 1
+			} else if (contentlength < 16384) {
+				remaining_legth_length = 2
+			} else if (contentlength < 2097152) {
+				remaining_legth_length = 3
+			} else if (contentlength < 268435456 ) {
+				remaining_legth_length = 4
+			} else {
+				contentlength = -1
+				debugMqtt("Content is too large, cannot calculate remaining length field.")
+			}
+
+			evaluation.sendEval({
+				"soliot-server-mqtt-soliot-updated-at": start,
+				"soliot-server-mqtt-soliot-updated-finished-at": end,
+				"soliot-server-mqtt-soliot-updated-duration": end - start,
+				"soliot-server-mqtt-soliot-updated-request-size": 1 + remaining_legth_length + contentlength + topiclength
+			})
+
+			
 			if(err) {
 				debugMqtt("MQTT Broker responded with error: " + err)
 				throw err
@@ -142,6 +175,8 @@ MQTT = function() {
 
 
 	this.publishCreated = function(resourceUri, content, callback) {
+
+		var start = new Date()
 
 		debugMqtt("Publishing 'created'...")
 		/*
@@ -164,7 +199,36 @@ MQTT = function() {
 		*/
 		client.publish("soliot/created/" + encodeURIComponent(resourceUri), content, /*options,*/ function(err){
 			
+			var end = new Date()
+
 			debugMqtt("Sent 'soliot/created/'" + encodeURIComponent(resourceUri) + " to the MQTT Broker.")
+			var evaluation = new EvalUtils()
+
+			var topiclength = Buffer.byteLength("soliot/created/" + encodeURIComponent(resourceUri), 'utf8')
+			var contentlength = Buffer.byteLength(content, 'utf8')
+			//var optionslength = JSON.stringify(req.options).replace(/[\[\]\,\"]/g,'').length // measure the byte size of the options
+
+			let remaining_legth_length
+			if (contentlength < 128) {
+				remaining_legth_length = 1
+			} else if (contentlength < 16384) {
+				remaining_legth_length = 2
+			} else if (contentlength < 2097152) {
+				remaining_legth_length = 3
+			} else if (contentlength < 268435456 ) {
+				remaining_legth_length = 4
+			} else {
+				contentlength = -1
+				debugMqtt("Content is too large, cannot calculate remaining length field.")
+			}
+
+			evaluation.sendEval({
+				"soliot-server-mqtt-soliot-created-at": start,
+				"soliot-server-mqtt-soliot-created-finished-at": end,
+				"soliot-server-mqtt-soliot-created-duration": end - start,
+				"soliot-server-mqtt-soliot-created-request-size": 1 + remaining_legth_length + contentlength + topiclength
+			})
+
 			if(err) {
 				debugMqtt("MQTT Broker responded with error: " + err)
 				throw err
@@ -177,6 +241,8 @@ MQTT = function() {
 
 
 	this.publishDelete = function(resourceUri, callback) {
+
+		var start = new Date()
 
 		debugMqtt("Publishing 'deletion'...")
 		/*
@@ -199,7 +265,37 @@ MQTT = function() {
 		*/
 		client.publish("soliot/deleted/" + encodeURIComponent(resourceUri), "", /*options,*/ function(err){
 			
+			var end = new Date()
+
 			debugMqtt("Sent 'soliot/deleted/'" + encodeURIComponent(resourceUri) + " to the MQTT Broker.")
+			var evaluation = new EvalUtils()
+
+			var topiclength = Buffer.byteLength("soliot/deleted/" + encodeURIComponent(resourceUri), 'utf8')
+			var contentlength = Buffer.byteLength(content, 'utf8')
+			//var optionslength = JSON.stringify(req.options).replace(/[\[\]\,\"]/g,'').length // measure the byte size of the options
+
+			let remaining_legth_length
+			if (contentlength < 128) {
+				remaining_legth_length = 1
+			} else if (contentlength < 16384) {
+				remaining_legth_length = 2
+			} else if (contentlength < 2097152) {
+				remaining_legth_length = 3
+			} else if (contentlength < 268435456 ) {
+				remaining_legth_length = 4
+			} else {
+				contentlength = -1
+				debugMqtt("Content is too large, cannot calculate remaining length field.")
+			}
+
+			evaluation.sendEval({
+				"soliot-server-mqtt-soliot-deleted-at": start,
+				"soliot-server-mqtt-soliot-deleted-finished-at": end,
+				"soliot-server-mqtt-soliot-deleted-duration": end - start,
+				"soliot-server-mqtt-soliot-deleted-request-size": 1 + remaining_legth_length + contentlength + topiclength
+			})
+
+			
 			if(err) {
 				debugMqtt("MQTT Broker responded with error: " + err)
 				throw err

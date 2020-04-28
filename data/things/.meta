@@ -4,9 +4,15 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix saref: <http://ontology.tno.nl/saref/>.
 @prefix ldp: <http://www.w3.org/ns/ldp#>.
 @prefix td: <https://www.w3.org/2019/wot/td#> .
 
 <./> a ldp:BasicContainer ;
     rdfs:label "things"^^xsd:string ;
+    rdfs:comment "This is the entry point for Digital Twins according the SOLIOT concept. Follow the lpd:contains links to discover more resources!"@en ;
+    dcterms:creator <http://dblp.org/pers/hd/b/Bader:Sebastian_R=> ;
+    dcterms:creator <https://sebastianrbader.inrupt.net/profile/card#me> ;
+    rdfs:seeAlso <https://solid.github.io/specification/> ;
+    rdfs:seeAlso <https://github.com/sebbader/soliot> ;
 .

@@ -4,8 +4,10 @@
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
-@prefix idsSensor: <http://www.iml.fraunhofer.de/ids/sensor#> .
+@prefix td: <https://www.w3.org/2019/wot/td#> .
 
-<./> rdf:type sosa:Result ;
+<./> rdf:type ldp:Resource, sosa:Result ;
     sosa:isResultOf <../> ;
-    sosa:hasSimpleResult "11 Cel"^^cdt:ucum .
+    td:observable true ;
+    td:actions <./affordanceReadState> ;
+.

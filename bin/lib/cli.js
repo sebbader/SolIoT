@@ -34,9 +34,16 @@ module.exports = function startCli (server) {
   var mqtt = new MQTT()
   mqtt.loadMqtt(program)
 
-  var time = new Date() - start;
+  // sba
+  var end = new Date()
+  var duration = end - start;
+  EvalUtils.program = program
   var evaluation = new EvalUtils()
-  evaluation.sendEval({"start-time": time})
+  evaluation.sendEval({
+    "started-at": start,
+    "start-complete-at": end,
+    "start-duration": duration
+  })
 }
 
 function getVersion () {

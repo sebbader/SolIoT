@@ -1,0 +1,35 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix cov: <../coap-binding#> .
+@prefix mqtt: <../mqtt-binding#> .
+@prefix htv: <http://www.w3.org/2011/http#>.
+@prefix saref: <http://ontology.tno.nl/saref/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+
+<./> a td:ActionAffordance ;
+    td:title "READ Allowed Operations" ;
+    td:description "Discover the operations on this device representation."@en ;
+    td:forms [
+        td:op td:readproperty ;
+        td:href "./"^^xsd:anyUri ;
+        td:contentType "application/ld+json" ;
+        td:contentType "application/td+json" ;
+        cov:methodName "get" ;
+        cov:queryParam "ldp=options" ;
+        htv:methodName "OPTIONS" ;
+        td:security <./.acl> ;
+    ] ;
+    td:input [
+        td:readOnly true ;
+    ] ;
+    td:output [
+        td:readOnly true ;
+    ] ;
+    td:safe true ;
+    td:idempotent true ;
+.

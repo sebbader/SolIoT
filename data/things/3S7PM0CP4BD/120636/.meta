@@ -1,0 +1,27 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
+@prefix saref: <http://ontology.tno.nl/saref/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+
+# Generic tracker sensor as source for the observation
+<./> rdf:type sosa:Sensor, td:Thing, ldp:BasicContainer ;
+    rdfs:label "Tracker Sensor on Tracker #120636" ;
+    td:title "Tracker Sensor on Tracker #120636" ;
+    rdfs:comment "Unspecified Sensor on Tracker #120636."@en ;
+    td:description "Unspecified Sensor on Tracker #120636."@en ;
+    sosa:madeObservation <./2018-10-24T01-22-30-866Z/> 
+    td:id "120636" ;
+    td:security <../.acl> ; 
+    td:actions <./affordanceCreate> ;
+    td:actions <./affordanceOverwrite> ;
+    td:actions <./affordanceReadMeta> ;
+    td:actions <./affordanceReadOperations> ;
+    td:actions <./affordanceReadState> ;
+    td:events <./affordanceNotification> ;
+    td:events <./affordanceAlarm> ;
+.
