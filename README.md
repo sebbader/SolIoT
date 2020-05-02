@@ -4,6 +4,15 @@ This repository contains the SOLIOT prototype implementation. It heavily relies 
 
 The SOLIOT server requires further configuration attributes (check (config.json)[config.json]) and will, after start, provide the respective endpoints at 5684 (CoAP) and 8883 (MQTT).
 
+## Related Resources
+
+SOLIOT IoT server implementation: [SOLIOT on GitHub](https://github.com/sebbader/soliot) (this repository)
+SOLID server implementation: [SOLID on GitHub](https://github.com/sebbader/solid) 
+Evaluation Data: [SOLIOT Performance Resources](https://github.com/sebbader/soliot_evaluation)
+
+
+## Team
+
 Contact: [Sebastian Bader](https://github.com/sebbader) ([email](mailto:sebastian.bader@iais.fraunhofer.de))
 
 
