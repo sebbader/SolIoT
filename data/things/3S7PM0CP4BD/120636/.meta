@@ -14,7 +14,7 @@
     td:title "Tracker Sensor on Tracker #120636" ;
     rdfs:comment "Unspecified Sensor on Tracker #120636."@en ;
     td:description "Unspecified Sensor on Tracker #120636."@en ;
-    sosa:madeObservation <./2018-10-24T01-22-30-866Z/> 
+    sosa:madeObservation <./2018-10-24T01-22-30-866Z/> ;
     td:id "120636" ;
     td:security <../.acl> ; 
     td:actions <./affordanceCreate> ;
