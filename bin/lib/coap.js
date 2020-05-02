@@ -31,14 +31,19 @@ module.exports = function (program) {
 	var deleteHandler = new DeleteHandler(program)
     var putHandler = new PutHandler(program)
     
-    var evaluation = new EvalUtils()
+    //var evaluation = new EvalUtils()
     
     // add handlers for CoAP methods
     server.on('request', function(req, res) {
+
+        req.on('error', function(err){
+            console.log(err)
+        })
+
         if (req.method == "GET") {
 
         	// SOLIOT evaluation
-	  		var start = new Date()
+	  		//var start = new Date()
 
             //console.log('CoAP GET: ' + req.url)
             getHandler.handle(req, res)
@@ -46,13 +51,13 @@ module.exports = function (program) {
 
             
 			// SOLIOT evaluation
-			var time = new Date() - start;
-			evaluation.sendEval({"coap-server-get-time": time})
+			//var time = new Date() - start;
+			//evaluation.sendEval({"coap-server-get-time": time})
         }
         else if (req.method == "PUT") {
 
         	// SOLIOT evaluation
-	  		var start = new Date()
+	  		//var start = new Date()
 
             //console.log('CoAP PUT: ' + req.url)
             putHandler.handle(req, res)
@@ -60,13 +65,13 @@ module.exports = function (program) {
 
             
 			// SOLIOT evaluation
-			var time = new Date() - start;
-			evaluation.sendEval({"coap-server-put-time": time})
+			//var time = new Date() - start;
+			//evaluation.sendEval({"coap-server-put-time": time})
         }
         else if (req.method == "POST") {
 
         	// SOLIOT evaluation
-	  		var start = new Date()
+	  		//var start = new Date()
 
             //console.log('CoAP POST: ' + req.url)
             postHandler.handle(req, res)
@@ -74,13 +79,13 @@ module.exports = function (program) {
 
             
 			// SOLIOT evaluation
-			var time = new Date() - start;
-			evaluation.sendEval({"coap-server-post-time": time})
+			//var time = new Date() - start;
+			//evaluation.sendEval({"coap-server-post-time": time})
         }
         else if (req.method == "DELETE") {
 
         	// SOLIOT evaluation
-	  		var start = new Date()
+	  		//var start = new Date()
 
             //console.log('CoAP DELETE: ' + req.url)
             deleteHandler.handle(req, res)
@@ -88,10 +93,14 @@ module.exports = function (program) {
 
             
 			// SOLIOT evaluation
-			var time = new Date() - start;
-			evaluation.sendEval({"coap-server-delete-time": time})
+			//var time = new Date() - start;
+			//evaluation.sendEval({"coap-server-delete-time": time})
         }
       //res.end('GET - CoAP says: Hello ' + req.url.split('/')[1] + '\n')
+    })
+
+    server.on('error', function(err) {
+        console.log(err);
     })
     
     // the default CoAP port is 5683
