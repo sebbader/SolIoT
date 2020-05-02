@@ -1,0 +1,35 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix cov: <../coap-binding#> .
+@prefix mqtt: <../mqtt-binding#> .
+@prefix htv: <http://www.w3.org/2011/http#>.
+@prefix saref: <http://ontology.tno.nl/saref/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+
+<./> a td:ActionAffordance ;
+    td:title "OVERWRITE" ;
+    td:description "Overwrite the current state of this resource by sending the new state as a RDF representation."@en ;
+    td:forms <#form> ;
+    td:input <#input> ;
+    td:safe false ;
+    td:idempotent false ;
+.
+
+<#input>
+        td:readOnly false ;
+        td:writeOnly false ;
+.
+
+<#form> td:op td:readproperty ;
+        td:href "./"^^xsd:anyUri ;
+        td:contentType "application/ld+json" ;
+        td:contentType "application/td+json" ;
+        cov:methodName "put" ;
+        htv:methodName "PUT" ;
+        td:security <./.acl> ;
+.

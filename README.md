@@ -1,13 +1,17 @@
-# solid-server in Node
+# SOLIOT: SOLID for IoT
 
-[![](https://img.shields.io/badge/project-Solid-7C4DFF.svg?style=flat-square)](https://github.com/solid/solid)
-[![Build Status](https://travis-ci.org/solid/node-solid-server.svg?branch=master&style=flat-square)](https://travis-ci.org/solid/node-solid-server)
-[![NPM Version](https://img.shields.io/npm/v/solid-server.svg?style=flat-square)](https://npm.im/solid-server)
-[![Gitter chat](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](http://gitter.im/solid/node-solid-server)
+This repository contains the SOLIOT prototype implementation. It heavily relies on the SOLID NodeJS reference implementation (credits to the SOLID developer community!) and has been extended with CoAP and MQTT enspoints. The goal of this project is to use the advantages of the SOLID approach and introduce it into the IoT and Industry 4.0 community.
 
-> [Solid](https://github.com/solid) server in [NodeJS](https://nodejs.org/)
+The SOLIOT server requires further configuration attributes (check (config.json)[config.json]) and will, after start, provide the respective endpoints at 5684 (CoAP) and 8883 (MQTT).
 
-`solid-server` lets you run a Solid server on top of the file-system. You can use it as a [command-line tool](https://github.com/solid/node-solid-server/blob/master/README.md#command-line-usage) (easy) or as a [library](https://github.com/solid/node-solid-server/blob/master/README.md#library-usage) (advanced).
+Contact: [Sebastian Bader](https://github.com/sebbader) ([email](mailto:sebastian.bader@iais.fraunhofer.de))
+
+
+
+
+
+
+# Following instructions from the SOLID NodeJS server still apply:
 
 ## Solid Features supported
 - [x] [Linked Data Platform](http://www.w3.org/TR/ldp/)
@@ -21,18 +25,6 @@
 
 ## Command Line Usage
 
-### Install
-
-You can install and run the server either using Node.js directly or using
-[Docker](https://www.docker.com/).  This and the following sections describe the
-first approach, for the second approach see the section [use Docker](#use-docker)
-Section below.
-
-To install, first install [Node](https://nodejs.org/en/) and then run the following
-
-```bash
-$ npm install -g solid-server
-```
 
 ### Run a single-user server (beginner)
 
@@ -90,43 +82,6 @@ in a directory one level higher from the current, so that you don't
 accidentally commit your certificates to `solid` while you're developing.
 
 If you would like to get rid of the browser warnings, import your fullchain.pem certificate into your 'Trusted Root Certificate' store.
-
-### Run multi-user server (intermediate)
-
-You can run `solid` so that new users can sign up, in other words, get their WebIDs _username.yourdomain.com_.
-
-Pre-requisites:
-- Get a [Wildcard Certificate](https://en.wikipedia.org/wiki/Wildcard_certificate)
-- Add a Wildcard DNS record in your DNS zone (e.g.`*.yourdomain.com`)
-- (If you are running locally) Add the line `127.0.0.1 *.localhost` to `/etc/hosts`
-
-```bash
-$ solid init
-..
-? Allow users to register their WebID (y/N) # write `y` here
-..
-$ solid start
-```
-
-Otherwise, if you want to use flags, this would be the equivalent
-
-```bash
-$ solid start --multiuser --port 8443 --ssl-cert /path/to/cert --ssl-key /path/to/key --root ./data
-```
-
-Your users will have a dedicated folder under `./data` at `./data/<username>.<yourdomain.tld>`. Also, your root domain's website will be in `./data/<yourdomain.tld>`. New users can create accounts on `/api/accounts/new` and create new certificates on `/api/accounts/cert`. An easy-to-use sign-up tool is found on `/api/accounts`.
-
-### Running Solid behind a reverse proxy (such as NGINX)
-See [Running Solid behind a reverse proxy](https://github.com/solid/node-solid-server/wiki/Running-Solid-behind-a-reverse-proxy).
-
-##### How can I send emails to my users with my Gmail?
-
-> To use Gmail you may need to configure ["Allow Less Secure Apps"](https://www.google.com/settings/security/lesssecureapps) in your Gmail account unless you are using 2FA in which case you would have to create an [Application Specific](https://security.google.com/settings/security/apppasswords) password. You also may need to unlock your account with ["Allow access to your Google account"](https://accounts.google.com/DisplayUnlockCaptcha) to use SMTP.
-
-### Upgrading from version 4
-To upgrade from version 4 to the current version 5, you need to run a migration script, as explained in the [v5 upgrade notes](https://github.com/solid/node-solid-server/blob/master/CHANGELOG.md#500-upgrade-notes).
-
-Also, be aware that starting from version 5, third-party apps are untrusted by default. To trust a third-party app, before you can log in to it, you first need to go to your profile at https://example.com/profile/card#me (important to include the '#me' there), and then hover over the 'card' header to reveal the context menu. From there, select the 'A' symbol to go to your trusted applications pane, where you can whitelist third-party apps before using them. See also https://github.com/solid/node-solid-server/issues/1142 about streamlining this UX flow.
 
 ### Extra flags (expert)
 The command line tool has the following options
@@ -214,34 +169,6 @@ CLI flags take precedence over Environment variables, which take precedence over
 
 Configuring Solid via the config file can be a concise and convenient method and is the generally recommended approach. CLI flags can be useful when you would like to override a single configuration parameter, and using environment variables can be helpful in situations where you wish to deploy a single generic Docker image to multiple environments.
 
-## Use Docker
-
-Build with:
-
-```bash
-docker build -t node-solid-server .
-```
-
-Run with:
-```bash
-docker run -p 8443:8443 --name solid node-solid-server
-```
-
-This will enable you to login to solid on https://localhost:8443 and then create a new account
-but not yet use that account. After a new account is made you will need to create an entry for 
-it in your local (/etc/)hosts file in line with the account and subdomain i.e. 
-
-127.0.0.1	newsoliduser.localhost
-
-Then you'll be able to use solid as intended.
-
-You can modify the config within the docker container as follows:
-
- - Copy the config to the current directory with: `docker cp solid:/usr/src/app/config.json .`
- - Edit the `config.json` file
- - Copy the file back with `docker cp config.json solid:/usr/src/app/`
- - Restart the server with `docker restart solid`
-
 ## Library Usage
 
 ### Install Dependencies
@@ -264,18 +191,18 @@ default settings.
 
 ```javascript
 {
-  cache: 0, // Set cache time (in seconds), 0 for no cache
-  live: true, // Enable live support through WebSockets
-  root: './', // Root location on the filesystem to serve resources
-  secret: 'node-ldp', // Express Session secret key
-  cert: false, // Path to the ssl cert
-  key: false, // Path to the ssl key
-  mount: '/', // Where to mount Linked Data Platform
-  webid: false, // Enable WebID+TLS authentication
-  suffixAcl: '.acl', // Suffix for acl files
-  corsProxy: false, // Where to mount the CORS proxy
-  errorHandler: false, // function(err, req, res, next) to have a custom error handler
-  errorPages: false // specify a path where the error pages are
+  cache:        0,           // Set cache time (in seconds), 0 for no cache
+  live:         true,        // Enable live support through WebSockets
+  root:         './',        // Root location on the filesystem to serve resources
+  secret:       'node-ldp',  // Express Session secret key
+  cert:         false,       // Path to the ssl cert
+  key:          false,       // Path to the ssl key
+  mount:        '/',         // Where to mount Linked Data Platform
+  webid:        false,       // Enable WebID+TLS authentication
+  suffixAcl:    '.acl',      // Suffix for acl files
+  corsProxy:    false,       // Where to mount the CORS proxy
+  errorHandler: false,       // function(err, req, res, next) to have a custom error handler
+  errorPages:   false        // specify a path where the error pages are
 }
 ```
 
@@ -370,51 +297,7 @@ Edit your `/etc/hosts` file, and append:
 127.0.0.1 nicola.localhost
 ```
 
-#### Running the Unit Tests
-
-```bash
-$ npm test
-# running the tests with logs
-$ DEBUG="solid:*" npm test
-```
-
-In order to test a single component, you can run
-
-```javascript
-npm run test-(acl|formats|params|patch)
-```
-
-## Blacklisted usernames
-
-By default Solid will not allow [certain usernames as they might cause
-confusion or allow vulnerabilies for social engineering](https://github.com/marteinn/The-Big-Username-Blacklist).
-This list is configurable via `config/usernames-blacklist.json`. Solid does not
-blacklist profanities by default.
-
-## Quota
-
-By default, a file `serverSide.ttl.inactive` will be installed to new
-PODs. If you rename it to `serverSide.ttl`, it will currently set a
-quota for disk usage.  This file is not writeable to users, only
-server administrators who are authorized on the backend can modify
-it. It is currently adviceable to remove it or set it inactive rather
-than set a large quota, because the current implementation will impair
-write performance if there is a lot of data.
-
-## Contribute to Solid
-
-Solid is only possible because of a large community of [contributors](https://github.com/solid/node-solid-server/blob/master/CONTRIBUTORS.md).
-A heartfelt thank you to everyone for all of your efforts!
-
-You can help us too:
-
-- [Join us in Gitter](https://gitter.im/solid/chat) to help with development or to hang out with us :)
-- [Create a new issue](https://github.com/solid/node-solid-server/issues/new) to report bugs
-- [Fix an issue](https://github.com/solid/node-solid-server/issues)
-- Reach out to Jackson at jacksonm@inrupt.com to become more involved in maintaining Node Solid Server
-
-Have a look at [CONTRIBUTING.md](https://github.com/solid/node-solid-server/blob/master/CONTRIBUTING.md).
 
 ## License
 
-[The MIT License](https://github.com/solid/node-solid-server/blob/master/LICENSE.md)
+MIT License

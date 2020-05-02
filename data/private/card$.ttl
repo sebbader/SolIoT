@@ -1,0 +1,33 @@
+@prefix : <#>.
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix c: <https://localhost:8443/profile/card#>.
+@prefix schem: <http://schema.org/>.
+@prefix n0: <http://xmlns.com/foaf/0.1/>.
+@prefix n: <http://www.w3.org/2006/vcard/ns#>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix inbox: </inbox/>.
+@prefix sp: <http://www.w3.org/ns/pim/space#>.
+@prefix loc: </>.
+@prefix pro: <./>.
+@prefix ssn: <http://www.w3.org/ns/ssn/>.
+@prefix n1: <https://sebastianrbader.inrupt.net/profile/card#>.
+
+c:privateMe
+    a schem:Person, n0:Person;
+    a ssn:Sensor;
+    n:fn "IIoT Sensor";
+    n:note "I am an IIoT sensor. I do IIoT stuff. I speak HTTP, CoAP and MQTT. Do you want to be my friend?";
+    n:organization-name "IIoT Dev Inc.";
+    n:role "ssn:Sensor";
+    ldp:inbox inbox:;
+    sp:preferencesFile </settings/prefs.ttl>;
+    sp:storage loc:;
+    solid:account loc:;
+    solid:privateTypeIndex </settings/privateTypeIndex.ttl>;
+    solid:publicTypeIndex </settings/publicTypeIndex.ttl>;
+    n0:name "IIoT Sensor" ;
+    n0:knows n1:me ;
+    n:hasWebId c:me ;
+    .
+pro:card a n0:PersonalProfileDocument; n0:maker c:me; n0:primaryTopic c:me.
+

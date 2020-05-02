@@ -1,0 +1,27 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix saref: <http://ontology.tno.nl/saref/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+
+<./> a td:Thing, a ldp:BasicContainer, a saref:Device ;
+    rdfs:label "3S7PM0CP4BD"^^xsd:string ;
+    td:title "3S7PM0CP4BD"^^xsd:string ;
+    td:id "http://smart.festo.com/demo/aas/2/0/454576463545648365874"^^xsd:anyUri ;
+    td:description "Festo OVEL Vacuum generator"@en ;
+    td:description "Festo OVEL Vakuumsaugdüse"@en ;
+    td:security <./.acl> ; 
+    td:actions <./affordanceCreate> ;
+    td:actions <./affordanceDelete> ;
+    td:actions <./affordanceExtend> ;
+    td:actions <./affordanceOverwrite> ;
+    td:actions <./affordanceReadMeta> ;
+    td:actions <./affordanceReadOperations> ;
+    td:actions <./affordanceReadState> ;
+    td:events <./affordanceNotification> ;
+    td:events <./affordanceAlarm> ;
+.

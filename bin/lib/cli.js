@@ -7,7 +7,16 @@ const loadUpdateIndex = require('./updateIndex')
 const { spawnSync } = require('child_process')
 const path = require('path')
 
+const loadCoap = require('./coap')
+require('./mqtt')
+const EvalUtils = require('../../lib/iot/EvalUtils')
+
 module.exports = function startCli (server) {
+
+  // SOLIOT evaluation
+  var start = new Date()
+  EvalUtils.program = program
+
   program.version(getVersion())
 
   loadInit(program)
@@ -16,8 +25,25 @@ module.exports = function startCli (server) {
   loadMigrateLegacyResources(program)
   loadUpdateIndex(program)
 
+
   program.parse(process.argv)
   if (program.args.length === 0) program.help()
+  
+  // sba extension:
+  loadCoap(program)
+  var mqtt = new MQTT()
+  mqtt.loadMqtt(program)
+
+  // sba
+  var end = new Date()
+  var duration = end - start;
+  EvalUtils.program = program
+  var evaluation = new EvalUtils()
+  evaluation.sendEval({
+    "started-at": start,
+    "start-complete-at": end,
+    "start-duration": duration
+  })
 }
 
 function getVersion () {
@@ -37,4 +63,5 @@ function getVersion () {
     return version
   }
 }
+
 

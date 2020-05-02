@@ -19,10 +19,31 @@ module.exports = [
     filter: (value) => path.resolve(value)
   },
   {
+    name: 'evalserver',
+    help: "Server for collecting performance measurments",
+    question: 'A HTTP server waiting for performance measurments. Default is',
+    default: 'http://localhost:1234',
+    prompt: true
+  },
+  {
+    name: 'evalkey',
+    help: "Key to sign the performance measurment messages",
+    question: 'Should not be stored in plain text. Use environement variable "SOLIOT_EVALKEY" instead.',
+    default: 'secret',
+    prompt: true
+  },
+  {
     name: 'port',
     help: 'SSL port to use',
     question: 'SSL port to run on. Default is',
     default: '8443',
+    prompt: true
+  },
+  {
+    name: 'coapPort',
+    question: 'CoAP port to use',
+    help: "CoAP port to run on. Default is",
+    default: '5683',
     prompt: true
   },
   {
@@ -31,6 +52,28 @@ module.exports = [
     help: "Solid server uri (default: 'https://localhost:8443')",
     default: 'https://localhost:8443',
     validate: validUri,
+    prompt: true
+  },
+  {
+    name: 'mqttBroker',
+    question: 'MQTT Broker uri (with protocol, hostname and port)',
+    help: "MQTT Broker uri (default: 'mqtt://localhost:1883')",
+    default: 'mqtt://localhost:1883',
+    validate: validUri,
+    prompt: true
+  },
+  {
+    name: 'mqttCreateTopic',
+    question: 'Topic for creation of resources',
+    help: "Topic for creation of resources (default: 'soliot/+/create')",
+    default: 'soliot/+/create',
+    prompt: true
+  },
+  {
+    name: 'mqttMsgTopics',
+    question: 'MQTT topic pattern for subscription of SOLIOT',
+    help: "The MQTT general topic under which notifications are expected (default: 'soliot/*')",
+    default: 'soliot/*',
     prompt: true
   },
   {

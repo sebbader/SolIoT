@@ -1,0 +1,33 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix cov: <../coap-binding#> .
+@prefix mqtt: <../mqtt-binding#> .
+@prefix htv: <http://www.w3.org/2011/http#>.
+@prefix saref: <http://ontology.tno.nl/saref/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+
+<./> a td:EventAffordance ;
+    td:title "SUBSCRIBE" ;
+    td:description "Receive the state of the device as an RDF representation."@en ;
+    td:subscription <#subscribtion> ;
+    td:data "application/ld+json" ;
+    td:data "application/td+json" ;
+    td:cancelation <#cancelation> ; 
+.
+
+<#subscribtion> td:href "mqtt://ec2-3-126-245-183.eu-central-1.compute.amazonaws.com:8883"^^xsd:anyUri ;
+    td:contentType "application/ld+json" ;
+    td:contentType "application/td+json" ;
+    mqtt:methodName "subscribe" ;
+    mqtt:topic "soliot/#" ;
+    td:security <./.acl> ;
+.
+
+<#cancelation> td:href "mqtt://ec2-3-126-245-183.eu-central-1.compute.amazonaws.com:8883"^^xsd:anyUri ;
+    mqtt:methodName "unsubscribe" ;
+.

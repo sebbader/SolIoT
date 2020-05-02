@@ -1,0 +1,445 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix aas: <https://asset-shell.io/AAS/2/0/> .
+
+<./> a aas:Submodel ;
+    rdfs:label "Nameplate"^^xsd:string ;
+    aas:idShort "Nameplate"^^xsd:string ;
+    aas:identification <http://www.company.com/ids/sm/4343_5072_7091_3242> ;
+    aas:semanticId [
+        a aas:Reference ;
+        aas:key [
+            a aas:Key ;
+            aas:index "0"^^xsd:integer ;
+            aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ;
+			aas:local "false"^^xsd:boolean ;
+            aas:value "https://www.hsu-hh.de/aut/aas/nameplate"^^xsd:string ;
+            aas:idType aas:IRI_IDENTIFIER_TYPE ;
+        ] ;
+    ];
+    aas:kind aas:INSTANCE ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "ManufacturerName"^^xsd:string ;
+        rdfs:label "ManufacturerName"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+				aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "0173-1#02-AAO677#002"^^xsd:string ;
+                aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value "Festo AG & Co. KG"^^xsd:string ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "ManufacturerTypName"^^xsd:string ;
+        rdfs:label "ManufacturerTypName"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+				aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "0173-1#02-AAW338#001"^^xsd:string ;
+                aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value "OVEL Vacuum generator"^^xsd:string ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:submodelElementCollection ;
+        aas:idShort "PhysicalAddress"^^xsd:string ;
+        rdfs:label "PhysicalAddress"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+				aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "https://www.hsu-hh.de/aut/aas/physicaladdress"^^xsd:anyUri ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "CountryCode"^^xsd:string ;
+            rdfs:label "CountryCode"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAO730#001"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "DE"^^xsd:string ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "Street"^^xsd:string ;
+            rdfs:label "Street"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "https://www.hsu-hh.de/aut/aas/street"^^xsd:anyUri ;
+                    aas:idType aas:IRI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "Ruiter Straße 82"^^xsd:string ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "PostalCode"^^xsd:string ;
+            rdfs:label "PostalCode"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "https://www.hsu-hh.de/aut/aas/postalcode"^^xsd:anyUri ;
+                    aas:idType aas:IRI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "73734"^^xsd:string ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "City"^^xsd:string ;
+            rdfs:label "City"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "https://www.hsu-hh.de/aut/aas/city"^^xsd:anyUri ;
+                    aas:idType aas:IRI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "Esslingen-Berkheim"^^xsd:string ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "StateCounty"^^xsd:string ;
+            rdfs:label "StateCounty"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "https://www.hsu-hh.de/aut/aas/statecounty"^^xsd:anyUri ;
+                    aas:idType aas:IRI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "Baden-Württemberg"^^xsd:string ;
+        ] ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "TypClass"^^xsd:string ;
+        rdfs:label "TypClass"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "0173-1#02-AAU731#001"^^xsd:string ;
+                aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value "OVEL-5-H-10-P-VQ4-UA-Z-C-A-V1PNLK-H3"^^xsd:string ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "SerialNo"^^xsd:string ;
+        rdfs:label "SerialNo"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "http://www.company.com/ids/cd/9544_4082_7091_8596"^^xsd:string ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value "JO43"^^xsd:string ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "ChargeId"^^xsd:string ;
+        rdfs:label "ChargeId"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "0173-1#02-AAQ196#001"^^xsd:string ;
+                aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value ""^^xsd:string ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "CountryOfOrigin"^^xsd:string ;
+        rdfs:label "CountryOfOrigin"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "0173-1#02-AAO841#001"^^xsd:string ;
+                aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value "DE"^^xsd:string ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:Property ;
+        aas:idShort "YearOfConstruction"^^xsd:string ;
+        rdfs:label "YearOfConstruction"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "0173-1#02-AAP906#001"^^xsd:string ;
+                aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:value "2019"^^xsd:int ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:submodelElementCollection ;
+        aas:idShort "Marking_CE"^^xsd:string ;
+        rdfs:label "Marking_CE"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "https://www.hsu-hh.de/aut/aas/productmarking"^^xsd:anyUri ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "CEMarkingPresent"^^xsd:string ;
+            rdfs:label "CEMarkingPresent"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAX043#001"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "true"^^xsd:boolean ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:File ;
+            aas:idShort "File"^^xsd:string ;
+            rdfs:label "File"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAD005#008"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:mimeType "image/png"^^xsd:string ;
+            aas:value "./Nameplate/marking_ce.png"^^xsd:string ;
+            aas:value <./Nameplate/marking_ce.png> ;
+        ] ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:submodelElementCollection ;
+        aas:idShort "Marking_CRUUS"^^xsd:string ;
+        rdfs:label "Marking_CRUUS"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "https://www.hsu-hh.de/aut/aas/productmarking"^^xsd:anyUri ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "CRUUSLabelingPresent"^^xsd:string ;
+            rdfs:label "CRUUSLabelingPresent"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAR528#005"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "true"^^xsd:boolean ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:File ;
+            aas:idShort "File"^^xsd:string ;
+            rdfs:label "File"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAD005#008"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:mimeType "image/png"^^xsd:string ;
+            aas:value "./Nameplate/marking_cruus.jpg"^^xsd:string ;
+            aas:value <./Nameplate/marking_cruus.jpg> ;
+        ] ;
+    ] ;
+    aas:submodelElement [
+        rdf:type aas:submodelElementCollection ;
+        aas:idShort "Marking_RCM"^^xsd:string ;
+        rdfs:label "Marking_RCM"^^xsd:string ;
+        aas:propertyCategory aas:PARAMETER ;
+        aas:kind aas:INSTANCE ;
+        aas:semanticId [
+            a aas:Reference ;
+            aas:key [
+                a aas:Key ;
+                aas:index "0"^^xsd:integer ;
+                aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                aas:local "false"^^xsd:boolean ;
+                aas:value "https://www.hsu-hh.de/aut/aas/productmarking"^^xsd:anyUri ;
+                aas:idType aas:IRI_IDENTIFIER_TYPE ;
+            ] ;
+        ];
+        aas:submodelElement [
+            rdf:type aas:Property ;
+            aas:idShort "RCMLabelingPresent"^^xsd:string ;
+            rdfs:label "RCMLabelingPresent"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAR528#005"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:value "true"^^xsd:boolean ;
+        ] ;
+        aas:submodelElement [
+            rdf:type aas:File ;
+            aas:idShort "File"^^xsd:string ;
+            rdfs:label "File"^^xsd:string ;
+            aas:propertyCategory aas:PARAMETER ;
+            aas:kind aas:INSTANCE ;
+            aas:semanticId [
+                a aas:Reference ;
+                aas:key [
+                    a aas:Key ;
+                    aas:index "0"^^xsd:integer ;
+                    aas:type aas:GLOBAL_REFERENCE_KEY_ELEMENT ; 
+                    aas:local "false"^^xsd:boolean ;
+                    aas:value "0173-1#02-AAD005#008"^^xsd:string ;
+                    aas:idType aas:IRDI_IDENTIFIER_TYPE ;
+                ] ;
+            ];
+            aas:mimeType "image/png"^^xsd:string ;
+            aas:value "./Nameplate/marking_rcm.jpg"^^xsd:string ;
+            aas:value <./Nameplate/marking_rcm.jpg> ;
+        ] ;
+    ] ;
+.

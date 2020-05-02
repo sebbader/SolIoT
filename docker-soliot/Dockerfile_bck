@@ -1,0 +1,8 @@
+FROM debian
+RUN apt update && apt install -y nodejs npm python3 git
+RUN npm install npm -g
+RUN git clone https://github.com/sebbader/node-solid-server.git
+RUN cd node-solid-server && git checkout develop
+RUN cd node-solid-server && npm install
+#ENTRYPOINT ["node", "--inspect", "/node-solid-server/bin/solid-debug-sba.js", "start"]
+ENTRYPOINT ["/bin/bash", "/node-solid-server/bin/soliot.sh"]

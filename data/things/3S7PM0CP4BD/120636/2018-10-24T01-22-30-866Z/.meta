@@ -1,0 +1,41 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
+@prefix saref: <http://ontology.tno.nl/saref/>.
+@prefix ldp: <http://www.w3.org/ns/ldp#>.
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+
+
+#One Observation with multiple results containing all data previously held by json
+<./> rdf:type ldp:BasicContainer, sosa:Observation ;
+    rdfs:label "2018-10-24T01-22-30-866Z" ;
+    rdfs:comment "Observations made by sensor 120636/sensor at 2018-10-24T01:22:30.866Z"@en ;
+    sosa:madeBySensor <120636/GenericTrackerSensor> ;
+    sosa:resultTime "2018-10-24T01:22:30.866Z"^^xsd:dateTime ;
+    sosa:hasResult <./maximumTemperature> ;
+    sosa:hasResult <./currentTemperature> ;
+    sosa:hasResult <./minimumTemperature> ;
+    sosa:hasResult <./lastAccelerometerMotionHistoryCount> ;
+    sosa:hasResult <./lastMagnetometerMotionHistoryCount> ;
+    sosa:hasResult <./lastAccelerometerMotionHistory> ;
+    sosa:hasResult <./orientationChangeCount> ;
+    sosa:hasResult <./reedActivationCount> ;
+    sosa:hasResult <./lastMagnetometerMotionHistory> ;
+    sosa:hasResult <./freeFallCount> ;
+    td:property <./maximumTemperature> ;
+    td:property <./currentTemperature> ;
+    td:property <./minimumTemperature> ;
+    td:property <./lastAccelerometerMotionHistoryCount> ;
+    td:property <./lastMagnetometerMotionHistoryCount> ;
+    td:property <./lastAccelerometerMotionHistory> ;
+    td:property <./orientationChangeCount> ;
+    td:property <./reedActivationCount> ;
+    td:property <./lastMagnetometerMotionHistory> ;
+    td:property <./freeFallCount> ;
+    td:description "SCHEDULED" ;
+    td:description "Tracker trigger activated" ;
+    td:actions <./affordanceReadState> ;
+.
