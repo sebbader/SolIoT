@@ -12,6 +12,7 @@
 /config/templates
 /config/views
 #/data
+/data/eclass/**
 /coverage
 /node_modules
 /npm-debug.log
